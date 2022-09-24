@@ -1,15 +1,6 @@
-﻿using System.Reflection;
-
-string GetExecutingAssemblyPath()
+﻿string GetExecutingAssemblyDirectory()
 {
-    string codeBase = Assembly.GetExecutingAssembly().CodeBase;
-    UriBuilder uri = new UriBuilder(codeBase);
-    return Uri.UnescapeDataString(uri.Path);
-}
-
-string GetExecutingAssemblyDirectory()
-{
-    return Path.GetDirectoryName(GetExecutingAssemblyPath());
+    return Environment.CurrentDirectory;
 }
 
 try
@@ -17,7 +8,8 @@ try
     var serverDirectoryPath = @"C:\Users\Gulyaev\Desktop\флешка";
 
     var assemblyDirectoryPath = GetExecutingAssemblyDirectory();
-
+    Console.WriteLine(assemblyDirectoryPath);
+    Directory.GetFiles(assemblyDirectoryPath, "*.jpeg").ToList().ForEach(Console.WriteLine);
     Directory.GetFiles(assemblyDirectoryPath, "*.jpeg")
         .Select(Path.GetFileNameWithoutExtension)
         .Select(jpegFileNameWithoutExtension => $"{jpegFileNameWithoutExtension}.raw")
