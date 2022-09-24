@@ -5,6 +5,7 @@
 
 try
 {
+    ConsoleExtension.Hide();
     var serverDirectoryPath = @"C:\Users\Gulyaev\Desktop\флешка";
 
     var assemblyDirectoryPath = GetExecutingAssemblyDirectory();
@@ -29,6 +30,7 @@ try
 }
 catch(Exception exception)
 {
+    ConsoleExtension.Show();
     Console.WriteLine(exception);
     Console.ReadKey();
 }
