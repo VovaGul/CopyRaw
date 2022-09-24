@@ -7,10 +7,13 @@ try
 {
     ConsoleExtension.Hide();
     var serverDirectoryPath = @"C:\Users\Gulyaev\Desktop\флешка";
+    Console.WriteLine($"{nameof(serverDirectoryPath)} = {serverDirectoryPath}");
 
     var assemblyDirectoryPath = GetExecutingAssemblyDirectory();
-    Console.WriteLine(assemblyDirectoryPath);
+    Console.WriteLine($"{nameof(assemblyDirectoryPath)} = {assemblyDirectoryPath}");
+
     Directory.GetFiles(assemblyDirectoryPath, "*.jpeg").ToList().ForEach(Console.WriteLine);
+
     Directory.GetFiles(assemblyDirectoryPath, "*.jpeg")
         .Select(Path.GetFileNameWithoutExtension)
         .Select(jpegFileNameWithoutExtension => $"{jpegFileNameWithoutExtension}.raw")
@@ -24,7 +27,8 @@ try
         {
             var copyFileLocalDirectoryPath = Path.GetDirectoryName(copyFile.LocalRawPath);
             Directory.CreateDirectory(copyFileLocalDirectoryPath);
-
+            Console.WriteLine($"{nameof(copyFile.LocalRawPath)} = {copyFile.LocalRawPath}");
+            Console.WriteLine($"{nameof(copyFile.ServerRawPath)} = {copyFile.ServerRawPath}");
             File.Copy(copyFile.ServerRawPath, copyFile.LocalRawPath);
         });
 }
