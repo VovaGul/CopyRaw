@@ -6,7 +6,7 @@
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
 	  <PublishSingleFile>true</PublishSingleFile>
-	  <AssemblyName>0.$(MSBuildProjectName)</AssemblyName>
+	  <AssemblyName>.$(MSBuildProjectName)</AssemblyName>
   </PropertyGroup>
 
 </Project>

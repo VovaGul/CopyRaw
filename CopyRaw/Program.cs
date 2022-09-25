@@ -6,17 +6,17 @@
 try
 {
     ConsoleExtension.Hide();
-    var serverDirectoryPath = @"C:\Users\Gulyaev\Desktop\флешка";
+    var serverDirectoryPath = @"D:\DCIM\100CANON";
     Console.WriteLine($"{nameof(serverDirectoryPath)} = {serverDirectoryPath}");
 
     var assemblyDirectoryPath = GetExecutingAssemblyDirectory();
     Console.WriteLine($"{nameof(assemblyDirectoryPath)} = {assemblyDirectoryPath}");
 
-    Directory.GetFiles(assemblyDirectoryPath, "*.jpeg").ToList().ForEach(Console.WriteLine);
+    Directory.GetFiles(assemblyDirectoryPath, "*.JPG").ToList().ForEach(Console.WriteLine);
 
-    Directory.GetFiles(assemblyDirectoryPath, "*.jpeg")
+    Directory.GetFiles(assemblyDirectoryPath, "*.JPG")
         .Select(Path.GetFileNameWithoutExtension)
-        .Select(jpegFileNameWithoutExtension => $"{jpegFileNameWithoutExtension}.raw")
+        .Select(jpegFileNameWithoutExtension => $"{jpegFileNameWithoutExtension}.CR2")
         .Select(rawFileName => new
         {
             ServerRawPath = Path.Combine(serverDirectoryPath, rawFileName),
